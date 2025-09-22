@@ -1,0 +1,295 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>【Java】学习笔记 | 我的博客</title><meta name="author" content="MiaoJieF"><meta name="copyright" content="MiaoJieF"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="ffffff"><meta name="description" content="java基本数据类型是否相等使用”&#x3D;&#x3D;“运算符；对象是否相等使用equals()方法，使用”&#x3D;&#x3D;”是判断是否引用到同一个对象上。  实例变量（非静态成员变量） 和类变量（静态成员变量） 可以不赋初值，Java 会自动分配默认值；其他类型的变量（尤其是局部变量）必须显式赋值后才能使用。（实例变量是声明在类中、方法之外的非静态变量（不含static修饰），属于对象的属性。当对象被创建时，Java 会">
+<meta property="og:type" content="article">
+<meta property="og:title" content="【Java】学习笔记">
+<meta property="og:url" content="http://example.com/2025/03/15/09_Java_learn/index.html">
+<meta property="og:site_name" content="我的博客">
+<meta property="og:description" content="java基本数据类型是否相等使用”&#x3D;&#x3D;“运算符；对象是否相等使用equals()方法，使用”&#x3D;&#x3D;”是判断是否引用到同一个对象上。  实例变量（非静态成员变量） 和类变量（静态成员变量） 可以不赋初值，Java 会自动分配默认值；其他类型的变量（尤其是局部变量）必须显式赋值后才能使用。（实例变量是声明在类中、方法之外的非静态变量（不含static修饰），属于对象的属性。当对象被创建时，Java 会">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://example.com/img/me.jpg">
+<meta property="article:published_time" content="2025-03-15T15:59:34.000Z">
+<meta property="article:modified_time" content="2025-09-22T23:23:26.641Z">
+<meta property="article:author" content="MiaoJieF">
+<meta property="article:tag" content="Java">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/img/me.jpg"><script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "【Java】学习笔记",
+  "url": "http://example.com/2025/03/15/09_Java_learn/",
+  "image": "http://example.com/img/me.jpg",
+  "datePublished": "2025-03-15T15:59:34.000Z",
+  "dateModified": "2025-09-22T23:23:26.641Z",
+  "author": [
+    {
+      "@type": "Person",
+      "name": "MiaoJieF",
+      "url": "http://example.com"
+    }
+  ]
+}</script><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="http://example.com/2025/03/15/09_Java_learn/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"><script>
+    (() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        if (!ttl) return
+        const expiry = Date.now() + ttl * 86400000
+        localStorage.setItem(key, JSON.stringify({ value, expiry }))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return undefined
+        const { value, expiry } = JSON.parse(itemStr)
+        if (Date.now() > expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return value
+      }
+    }
+
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        Object.entries(attr).forEach(([key, val]) => script.setAttribute(key, val))
+        script.onload = script.onreadystatechange = () => {
+          if (!script.readyState || /loaded|complete/.test(script.readyState)) resolve()
+        }
+        script.onerror = reject
+        document.head.appendChild(script)
+      }),
+      getCSS: (url, id) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onload = link.onreadystatechange = () => {
+          if (!link.readyState || /loaded|complete/.test(link.readyState)) resolve()
+        }
+        link.onerror = reject
+        document.head.appendChild(link)
+      }),
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!false && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
+  
+      
+      const activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', 'ffffff')
+        }
+      }
+
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
+
+      const theme = saveToLocal.get('theme')
+    
+          theme === 'dark' ? activateDarkMode() : theme === 'light' ? activateLightMode() : null
+        
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
+    
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()
+  </script><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":false,"top_n_per_article":1,"unescape":false,"pagination":{"enable":false,"hitsPerPage":8},"languages":{"hits_empty":"未找到符合您查询的内容：${query}","hits_stats":"共找到 ${hits} 篇文章"}},
+  translate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false,"highlightFullpage":false,"highlightMacStyle":false},
+  copy: {
+    success: '复制成功',
+    error: '复制失败',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'null',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyloadPlugin: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '【Java】学习笔记',
+  isHighlightShrink: false,
+  isToc: false,
+  pageType: 'post'
+}</script><meta name="generator" content="Hexo 7.3.0"></head><body><div id="web_bg" style="background-image: url(/img/background.jpg);"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img text-center"><img src="/img/me.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data text-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">9</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">2</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">2</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-user"></i><span> 关于</span></a></div><div class="menus_item"><a class="site-page" href="/links/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><span class="site-name">我的博客</span></a><a class="nav-page-title" href="/"><span class="site-name">【Java】学习笔记</span><span class="site-name"><i class="fa-solid fa-circle-arrow-left"></i><span>  返回首页</span></span></a></span><div id="menus"><div id="search-button"><span class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></span></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-user"></i><span> 关于</span></a></div><div class="menus_item"><a class="site-page" href="/links/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav><div id="post-info"><h1 class="post-title">【Java】学习笔记</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2025-03-15T15:59:34.000Z" title="发表于 2025-03-15 23:59:34">2025-03-15</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2025-09-22T23:23:26.641Z" title="更新于 2025-09-23 07:23:26">2025-09-23</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/Java/">Java</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title=""><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">浏览量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="container post-content" id="article-container"><ol>
+<li><p>java基本数据类型是否相等使用”==“运算符；对象是否相等使用equals()方法，使用”==”是判断是否引用到同一个对象上。</p>
+</li>
+<li><p>实例变量（非静态成员变量） 和类变量（静态成员变量） 可以不赋初值，Java 会自动分配默认值；其他类型的变量（尤其是局部变量）必须显式赋值后才能使用。（实例变量是声明在类中、方法之外的非静态变量（不含static修饰），属于对象的属性。当对象被创建时，Java 会自动为实例变量赋予默认值。）</p>
+</li>
+<li><p>同一类所有的实例共享一份静态变量。</p>
+</li>
+<li><p>判断是修改了引用的对象内容还是只修改了方法内的局部引用：（1）查看是否有修改对象内容的方法调用，如果方法中调用了修改对象内容的方法（如append()、replace()、put()等），则可能是修改了对象内容；（2）检查是否直接重新赋值，如果方法中直接对参数重新赋值（如x &#x3D; new…或x &#x3D; other），则只是修改了方法内的局部引用。</p>
+</li>
+<li><p>当try和finally块都有return语句时，finally块中的return会覆盖try块中的return，这是因为finally块在方法返回前执行。</p>
+</li>
+<li><p>final不能修饰接口和抽象类。final修饰的方法不能被重写(Override)，但是可以被重载(Overload)。重写是子类对父类方法的覆盖，而重载是同一个类中方法名相同但参数不同。</p>
+</li>
+<li><p>在Java中，final变量(成员变量)必须在以下位置之一进行初始化：（1）声明时直接初始化；（2）在构造方法中初始化；（3）在初始化块中初始化</p>
+</li>
+<li><p>事务隔离级别是由数据库系统来实现的,这是因为数据库系统负责管理并发事务的执行以及事务之间的隔离性。数据库系统通过锁机制、多版本并发控制(MVCC)等技术来实现不同级别的事务隔离。</p>
+</li>
+<li><p>java中byte类型是转换成int来进行计算的，结果也是int型；int型范围大于byte型，int型数据不能自动转换成byte，故不能直接赋给byte，无法编译。（byte b &#x3D; 1；b&#x3D; b + b；）</p>
+</li>
+<li><p>构造方法的名称与类名相同，构造方法没有返回类型（包括 void）。</p>
+</li>
+<li><p>在Java中synchronized关键字可以用来实现线程同步,通过获取对象的互斥锁来保证同步代码块或同步方法在同一时刻只能被一个线程执行。</p>
+</li>
+<li><p>使用了Thread类创建线程，t.run()是普通方法调用，不会启动新线程，而是在当前主线程中执行，t.start()才会调用新线程。</p>
+</li>
+<li><p>字符串连接操作是从左到右进行的；如果加法运算没有括号，且左边是字符串，则后续的数字会被当作字符串处理；数字之间的加法运算会先执行；括号内的运算具有高优先级，会先计算。<br><img src="/images/09_1.png" alt="在这里插入图片描述"></p>
+</li>
+<li><p>JVM在判定两个class是否相同时，不仅要判断类名是否相同，还要判断加载这个类的类加载器是否相同。这就是”类的唯一性”原则，同一个类文件被不同的类加载器加载，在JVM中会被认为是不同的类。</p>
+</li>
+<li><p>Java的虚拟机确实不支持泛型，所有的泛型在编译阶段都会被擦除，变成普通的类和方法；在编译阶段，所有的泛型类型参数都会被擦除，替换为其边界类型（如果没有指定边界，则替换为Object）；在创建泛型对象时明确指定类型参数是一个很好的实践。这样编译器可以在编译阶段就进行类型检查，避免运行时出现类型转换异常；类型擦除是Java泛型的重要特性，但这并不意味着完全无法获取泛型的类型信息，通过反射机制，我们依然可以在运行时获取到泛型的实际类型参数。</p>
+</li>
+<li><p>volatile关键字的作用</p>
+</li>
+</ol>
+<ul>
+<li>保证内存可见性：当一个线程修改了volatile变量的值，会立即强制将修改后的值刷新到主内存；其他线程读取该变量时，会强制从主内存重新加载最新值，而不是使用工作内存中的缓存副本。</li>
+<li>禁止指令重排序（确保代码执行顺序与预期一致）</li>
+</ul>
+<ol start="17">
+<li>volatile的局限性</li>
+</ol>
+<ul>
+<li>不保证原子性：volatile只能保证可见性和有序性，但无法保证复合操作的原子性。例如，i++（包含 “读取 - 修改 - 写入” 三步）即使被volatile修饰，在多线程下仍可能出现数据不一致。</li>
+<li>适用场景有限：通常用于状态标记（如示例中的flag）、双重检查锁定等简单场景，复杂的并发控制仍需依赖锁机制。</li>
+</ul>
+<ol start="18">
+<li>Java中的yield和sleep<br>在 Java 中，yield()和sleep()都是Thread类的静态方法，用于控制线程的执行状态，但它们的作用和行为有显著区别。</li>
+</ol>
+<ul>
+<li>Thread.yield() 方法：让当前正在执行的线程主动放弃 CPU 资源，回到 “就绪状态”，允许其他具有相同优先级的线程获得执行机会。yield()只是向线程调度器发出 “自愿让出 CPU” 的建议，调度器可能忽略该建议（例如，没有其他同优先级线程等待时，当前线程可能立即重新获得 CPU）。无法指定让出 CPU 的时长，完全由调度器决定何时再次执行当前线程。</li>
+<li>Thread.sleep(long millis) 方法：让当前线程暂停执行指定的时间（毫秒），进入 “阻塞状态”，期间不参与 CPU 调度。时间结束后，线程回到 “就绪状态”，等待调度器再次分配 CPU。</li>
+</ul>
+<ol start="19">
+<li>抽象类可以有构造函数。虽然抽象类不能被实例化，但它的构造函数可以被子类调用(通过super关键字)。</li>
+<li>final 是 Java 中的修饰符，可用于修饰类、方法、变量，作用是限制其 “可变性”，具体行为如下：</li>
+</ol>
+<ul>
+<li>被final修饰的类不能被继承（即无法有子类）</li>
+<li>被final修饰的方法不能被子类重写（Override）</li>
+<li>被final修饰的变量一旦赋值后就不能再修改（即 “常量”）：<ul>
+<li>对于基本数据类型（如int、double）：final保证值不可变</li>
+<li>对于引用数据类型（如对象、数组）：final保证引用地址不可变，但对象内部的属性可以改变</li>
+</ul>
+</li>
+<li>final变量必须在声明时、构造方法中或初始化块中赋值，否则编译报错</li>
+</ul>
+<ol start="21">
+<li>枚举用于定义一组固定的常量（如季节、星期、状态等），本质是一个继承了java.lang.Enum的类</li>
+</ol>
+<ul>
+<li>枚举的实例是预定义且唯一的，无法在运行时创建新实例</li>
+<li>可包含属性和方法</li>
+<li>枚举中的每个常量本质上都是该枚举类的一个对象，且是单例的（每个常量在内存中只有一个实例）</li>
+</ul>
+<ol start="22">
+<li>继承与重写案例一</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">A</span> &#123;</span><br><span class="line">    <span class="comment">// A类的构造函数，打印&quot;A-&quot;</span></span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">A</span><span class="params">()</span> &#123;</span><br><span class="line">        System.out.print(<span class="string">&quot;A-&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// A类的print方法，打印methodA</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">print</span><span class="params">()</span> &#123;</span><br><span class="line">        System.out.print(<span class="string">&quot;methodA&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">B</span> <span class="keyword">extends</span> <span class="title class_">A</span> &#123;</span><br><span class="line">    <span class="comment">// B类的构造函数，打印&quot;B-&quot;</span></span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">B</span><span class="params">()</span> &#123;</span><br><span class="line">        System.out.print(<span class="string">&quot;B-&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// B类的print方法，打印methodB</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">print</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="built_in">super</span>.print();</span><br><span class="line">        System.out.print(<span class="string">&quot;methodB&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Main</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        <span class="type">A</span> <span class="variable">a</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">B</span>();</span><br><span class="line">        a.print();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这段代码展示了Java中的继承和方法重写机制</p>
+<ul>
+<li><p>代码结构</p>
+<ul>
+<li>有三个类：A（父类）、B（子类）和Main（包含主方法）</li>
+<li>类A和类B都包含构造函数和print方法</li>
+<li>Main类中创建了B类的实例并调用了print方法</li>
+</ul>
+</li>
+<li><p>实现原理</p>
+<ul>
+<li><p><strong>继承关系</strong>：类B通过<code>extends A</code>继承了类A，因此B类拥有A类的所有非private成员。</p>
+</li>
+<li><p><strong>构造函数执行顺序</strong>：</p>
+<ul>
+<li>当执行<code>new B()</code>时，首先会调用父类A的构造函数，打印”A-“<ul>
+<li>然后调用子类B的构造函数，打印”B-“</li>
+<li>所以创建B对象时，控制台会输出”A-B-“</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>方法重写</p>
+<ul>
+<li>B类重写了A类的print方法</li>
+<li>在B类的print方法中，首先通过<code>super.print()</code>调用了父类的print方法，打印”methodA”</li>
+<li>然后打印”methodB”</li>
+<li>所以调用print方法时，控制台会输出”methodAmethodB”</li>
+</ul>
+</li>
+<li><p>执行结果<br>当执行<code>Main</code>类的main方法时，输出结果为：</p>
+</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">A-B-methodAmethodB</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>注意事项<ul>
+<li><p><strong>构造函数调用顺序</strong>：在Java中，创建子类对象时，会先调用父类的构造函数，然后再调用子类的构造函数。这是为了保证父类部分先被正确初始化。</p>
+</li>
+<li><p><strong>方法重写</strong>：子类可以重写父类的方法，但方法签名（方法名和参数列表）必须相同。重写的方法可以通过<code>super</code>关键字调用父类的版本。</p>
+</li>
+<li><p><strong>多态</strong>：虽然声明的是<code>A a = new B()</code>，但运行时会使用B类的print方法实现，这是Java多态的体现。</p>
+</li>
+<li><p><strong>访问权限</strong>：如果父类的方法是private的，则不会被继承，也就无法被重写。</p>
+</li>
+<li><p><strong>设计考虑</strong>：在这个例子中，子类B在重写print方法时先调用了父类的版本，这通常是一种良好的设计实践，可以保持父类功能的同时扩展子类功能。</p>
+</li>
+</ul>
+</li>
+</ul>
+<ol start="23">
+<li>子类构造方法必须先调用父类构造方法（显式通过 super(参数) 或隐式默认调用 super()）；普通方法重写后，通过子类对象调用该方法时，会优先执行子类的重写实现（多态特性），父类的方法可以通过 super.方法名() 在子类中被调用。</li>
+</ol>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="http://example.com">MiaoJieF</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="http://example.com/2025/03/15/09_Java_learn/">http://example.com/2025/03/15/09_Java_learn/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来源 <a href="http://example.com" target="_blank">我的博客</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/Java/">Java</a></div><div class="post-share"><div class="social-share" data-image="/img/me.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><a class="pagination-related full-width" href="/2025/05/20/05_Java_reflect/" title="【Java】反射"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info"><div class="info-1"><div class="info-item-1">上一篇</div><div class="info-item-2">【Java】反射</div></div><div class="info-2"><div class="info-item-1">在 Java 里，反射是一项强大的功能，它允许程序在运行时对自身进行检查，或者操作程序的内部属性。借助反射，Java 代码能够在运行时动态获取类的信息、创建对象、调用方法以及访问或修改字段，即便在编译时这些类的信息可能并不明确。 1. 反射的核心类Java 反射的功能主要由以下几个位于java.lang.reflect包和java.lang包中的类实现：  Class 类：代表一个类，是反射的基础。通过它可以获取类的结构信息。 Field 类：表示类的成员变量（字段），可用于获取或设置字段值。 Method 类：表示类的方法，可用于调用方法。 Constructor 类：表示类的构造方法，可用于创建对象。 Modifier 类：提供静态方法和常量，用于解析类、方法和字段的修饰符。  2. 获取 Class 对象的三种方式要使用反射，首先得获取目标类的Class对象，有以下三种常用方法： 123456789// 方式一：通过类名.class获取Class&lt;?&gt; clazz1 = String.class;// 方式二：通过对象.getClass()获取String st...</div></div></div></a></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><a class="pagination-related" href="/2025/05/20/05_Java_reflect/" title="【Java】反射"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2025-05-20</div><div class="info-item-2">【Java】反射</div></div><div class="info-2"><div class="info-item-1">在 Java 里，反射是一项强大的功能，它允许程序在运行时对自身进行检查，或者操作程序的内部属性。借助反射，Java 代码能够在运行时动态获取类的信息、创建对象、调用方法以及访问或修改字段，即便在编译时这些类的信息可能并不明确。 1. 反射的核心类Java 反射的功能主要由以下几个位于java.lang.reflect包和java.lang包中的类实现：  Class 类：代表一个类，是反射的基础。通过它可以获取类的结构信息。 Field 类：表示类的成员变量（字段），可用于获取或设置字段值。 Method 类：表示类的方法，可用于调用方法。 Constructor 类：表示类的构造方法，可用于创建对象。 Modifier 类：提供静态方法和常量，用于解析类、方法和字段的修饰符。  2. 获取 Class 对象的三种方式要使用反射，首先得获取目标类的Class对象，有以下三种常用方法： 123456789// 方式一：通过类名.class获取Class&lt;?&gt; clazz1 = String.class;// 方式二：通过对象.getClass()获取String st...</div></div></div></a><a class="pagination-related" href="/2025/05/21/06_Java_array/" title="【Java】数组"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2025-05-21</div><div class="info-item-2">【Java】数组</div></div><div class="info-2"><div class="info-item-1">在 Java 中，数组是一种存储固定大小同类型元素的数据结构。以下是几种常见的数组创建方法： 1. 声明并初始化数组使用 new 关键字创建数组，并指定长度。 1234// 声明数组变量int[] numbers;// 创建数组并分配内存空间numbers = new int[5]; // 长度为5的整数数组 2. 声明并直接初始化数组元素使用花括号 {} 直接初始化数组元素，无需指定长度。 12int[] numbers = &#123;10, 20, 30, 40, 50&#125;; // 长度为5的整数数组String[] names = &#123;&quot;Alice&quot;, &quot;Bob&quot;, &quot;Charlie&quot;&#125;; // 字符串数组  3. 动态初始化数组元素先创建数组，再逐个赋值。 1234int[] numbers = new int[3];numbers[0] = 100;numbers[1] = 200;numbers[2] = 300; 4. 多维数组创建二维或多维数组。 123456789101112...</div></div></div></a><a class="pagination-related" href="/2025/06/15/08_Java_arraylist_linkedlist/" title="【Java】ArrayList 和 LinkedList 详解"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2025-06-15</div><div class="info-item-2">【Java】ArrayList 和 LinkedList 详解</div></div><div class="info-2"><div class="info-item-1">一、数据结构与核心特性1. ArrayList 数据结构：基于动态数组实现，元素存储在连续内存中。 核心特性：– 通过索引随机访问元素，时间复杂度 O (1)。– 扩容机制：容量不足时新建数组（原容量的 1.5 倍）并复制元素。– 尾部添加 &#x2F; 删除效率高（O (1)），中间操作需移动元素（O (n)）。– 不直接支持 poll&#x2F;offer，需借助 ArrayDeque 或 LinkedList 包装。  2. LinkedList 数据结构：双向链表，每个节点包含前驱、后继指针和元素值。 核心特性：– 任意位置插入 &#x2F; 删除仅需修改指针（O (1)），但随机访问需遍历（O (n)）。– 实现 Deque 接口，原生支持 poll&#x2F;offer 等队列操作。– 无容量限制，节点动态分配内存，内存占用高于 ArrayList。  二、核心方法对比   操作类型 ArrayList LinkedList    构造 new ArrayList&lt;&gt;()（初始容量 10） new LinkedList&lt;&gt;()   添加元素 a...</div></div></div></a><a class="pagination-related" href="/2025/05/23/07_Java_collection%20/" title="【Java】集合类"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2025-05-23</div><div class="info-item-2">【Java】集合类</div></div><div class="info-2"><div class="info-item-1">Java 集合类是用于存储和操作数据的核心工具，主要分为Collection和Map两大接口体系，每个接口下有多种实现类。以下是 Java 集合类的完整介绍： 一、集合框架核心接口1. Collection 接口集合体系的根接口，定义了添加、删除、遍历等基本操作 三个主要子接口：  List：有序、可重复元素的集合，支持索引访问 Set：唯一元素集合，不允许重复值 Queue：按特定顺序（如 FIFO）处理元素的集合  2. Map 接口以键值对（Key-Value）形式存储数据，键唯一 二、常用集合类及其特点1. List 实现类   类名 特点    ArrayList 基于动态数组实现，随机访问高效，中间位置增删效率低   LinkedList 基于双向链表实现，增删效率高，随机访问效率低   Vector 线程安全，性能低于 ArrayList，已逐渐被淘汰   2. Set 实现类   类名 特点    HashSet 基于哈希表（底层为 HashMap），不保证元素顺序   LinkedHashSet 继承 HashSet，用链表维护插入顺序，插入和访问顺序一致   ...</div></div></div></a></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="/img/me.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info-name">MiaoJieF</div><div class="author-info-description"></div><div class="site-data"><a href="/archives/"><div class="headline">文章</div><div class="length-num">9</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">2</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">2</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/MiaoJieF"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/09/22/04_LLM_mcp/" title="【LLM学习】【Ollama】四、MCP">【LLM学习】【Ollama】四、MCP</a><time datetime="2025-09-22T15:59:34.000Z" title="发表于 2025-09-22 23:59:34">2025-09-22</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/09/22/03_LLM_rag/" title="【LLM学习】【Ollama】三、RAG">【LLM学习】【Ollama】三、RAG</a><time datetime="2025-09-22T15:58:40.000Z" title="发表于 2025-09-22 23:58:40">2025-09-22</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/09/22/02_LLM_finetune/" title="【LLM学习】【Ollama】二、微调">【LLM学习】【Ollama】二、微调</a><time datetime="2025-09-22T15:58:34.000Z" title="发表于 2025-09-22 23:58:34">2025-09-22</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/09/17/01_LLM_connect/" title="【LLM学习】【Ollama】一、本地运行与API调用">【LLM学习】【Ollama】一、本地运行与API调用</a><time datetime="2025-09-17T07:40:47.000Z" title="发表于 2025-09-17 15:40:47">2025-09-17</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/06/15/08_Java_arraylist_linkedlist/" title="【Java】ArrayList 和 LinkedList 详解">【Java】ArrayList 和 LinkedList 详解</a><time datetime="2025-06-15T15:59:34.000Z" title="发表于 2025-06-15 23:59:34">2025-06-15</time></div></div></div></div></div></div></main><footer id="footer"><div class="footer-other"><div class="footer-copyright"><span class="copyright">&copy;&nbsp;2019 - 2025 By MiaoJieF</span></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="日间和夜间模式切换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><div class="js-pjax"></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><i class="fas fa-spinner fa-pulse" id="loading-status" hidden="hidden"></i><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="text-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据加载中</span></div><div class="local-search-input"><input placeholder="搜索文章..." type="text"/></div><hr/><div id="local-search-results"></div><div class="ais-Pagination" id="local-search-pagination" style="display:none;"><ul class="ais-Pagination-list"></ul></div><div id="local-search-stats"></div></div><div id="search-mask"></div><script src="/js/search/local-search.js"></script></div></div></body></html>
